@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -16,11 +18,8 @@ import org.apache.ibatis.annotations.Update;
  */
 public interface UserMapper extends BaseMapper<User> {
 
-    @Update("UPDATE user SET current_step = #{ currentStep } WHERE username = #{ username };")
-    Integer setCurrentStep(@Param("currentStep") Integer currentStep,
-                           @Param("username") String username
-    );
-
-    @Select("SELECT current_step FROM user WHERE username = #{ username };")
-    Integer getCurrentStep(@Param("username") String username);
+    @Select("SELECT username, role_id FROM `user` LIMIT #{ start }, #{ step };")
+    List<User> getPage(@Param("start") Integer start,
+                       @Param("step") Integer step
+                    );
 }
