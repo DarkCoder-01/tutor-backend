@@ -1,9 +1,8 @@
 package com.darkcoder.shiro;
 
-import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.darkcoder.entity.User;
-import com.darkcoder.service.UserService;
+import com.darkcoder.entity.Users;
+import com.darkcoder.service.UsersService;
 import com.darkcoder.util.JwtUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -19,7 +18,7 @@ public class AccountRealm extends AuthorizingRealm {
     JwtUtils jwtUtils;
 
     @Autowired
-    UserService userService;
+    UsersService usersService;
 
     @Override
     public boolean supports(AuthenticationToken token) {
@@ -38,14 +37,14 @@ public class AccountRealm extends AuthorizingRealm {
 
         String userName = jwtUtils.getClaimByToken((String) jwtToken.getPrincipal()).getSubject();
 
-        User user = userService.getOne(new QueryWrapper<User>().eq("username", userName));
-        if (user == null) {
+        Users users = usersService.getOne(new QueryWrapper<Users>().eq("username", userName));
+        if (users == null) {
             throw new UnknownAccountException("账户不存在");
         }
 
         AccountProfile accountProfile = new AccountProfile();
         accountProfile.setUsername(userName);
-        accountProfile.setRole_id(user.getRoleId());
+        accountProfile.setRole_id(users.getRoleId());
 
         return new SimpleAuthenticationInfo(accountProfile, jwtToken.getCredentials(), getName());
     }

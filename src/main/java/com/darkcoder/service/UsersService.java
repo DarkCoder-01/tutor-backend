@@ -1,6 +1,6 @@
 package com.darkcoder.service;
 
-import com.darkcoder.entity.User;
+import com.darkcoder.entity.Users;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author Darkcoder
  * @since 2022-02-16
  */
-public interface UserService extends IService<User> {
+public interface UsersService extends IService<Users> {
 
 }

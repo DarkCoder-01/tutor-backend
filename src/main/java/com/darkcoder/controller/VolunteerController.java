@@ -50,7 +50,7 @@ public class VolunteerController {
 
             volunteer.setStudentId(volunteerDto.getStudentId());
             volunteer.setVolunteerTutor(volunteerTutor);
-            volunteer.setTutorConfirm(0);
+            volunteer.setTutorConfirm(false);
             volunteer.setSubmitTime(nowDate);
 
             volunteerService.save(volunteer);

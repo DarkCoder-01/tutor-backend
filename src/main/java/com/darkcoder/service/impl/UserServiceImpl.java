@@ -1,8 +1,8 @@
 package com.darkcoder.service.impl;
 
-import com.darkcoder.entity.User;
-import com.darkcoder.mapper.UserMapper;
-import com.darkcoder.service.UserService;
+import com.darkcoder.entity.Users;
+import com.darkcoder.mapper.UsersMapper;
+import com.darkcoder.service.UsersService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2022-02-16
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+public class UserServiceImpl extends ServiceImpl<UsersMapper, Users> implements UsersService {
 
 }

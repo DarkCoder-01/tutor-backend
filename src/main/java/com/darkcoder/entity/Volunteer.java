@@ -36,7 +36,7 @@ public class Volunteer implements Serializable {
     /**
      * 导师是否确认，0表示未确认，1表示确认
      */
-    private Integer tutorConfirm;
+    private boolean tutorConfirm;
 
     /**
      * 志愿提交时间
@@ -48,4 +48,5 @@ public class Volunteer implements Serializable {
      */
     private LocalDateTime confirmTime;
 
+    private Integer roundNo;
 }
