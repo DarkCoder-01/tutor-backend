@@ -23,7 +23,7 @@ public interface ActivityMapper extends BaseMapper<Activity> {
     @Select("SELECT * FROM activity WHERE enable = 1;")
     List<Activity> getCurrentActivity();
 
-    @Select("SELECT * FROM activity;")
+    @Select("SELECT * FROM activity order by type;")
     List<Activity> getAllActivity();
 
     @Update("UPDATE activity SET enable = #{ enable } WHERE id = #{ id };")

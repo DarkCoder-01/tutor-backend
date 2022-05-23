@@ -1,12 +1,15 @@
 package com.darkcoder.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * <p>
@@ -23,9 +26,11 @@ public class Volunteer implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
-
+    /**
+     * 学生ID，主键
+     */
+    @NotNull(message = "学号不能为空")
+    @TableId(value = "student_id")
     private Integer studentId;
 
     /**
@@ -41,12 +46,12 @@ public class Volunteer implements Serializable {
     /**
      * 志愿提交时间
      */
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime submitTime;
 
     /**
      * 导师确认时间
      */
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime confirmTime;
-
-    private Integer roundNo;
 }

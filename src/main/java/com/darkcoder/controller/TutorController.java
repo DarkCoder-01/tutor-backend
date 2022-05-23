@@ -105,4 +105,10 @@ public class TutorController {
         tutorService.saveOrUpdate(tutor);
         return Result.succ(null);
     }
+
+    @RequiresAuthentication
+    @GetMapping("/tutor/left")
+    public  Object getTutorLeft() {
+        return Result.succ(tutorMapper.getTutorLeft());
+    }
 }
